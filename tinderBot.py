@@ -1,4 +1,4 @@
-mport sys
+import sys
 from selenium import webdriver
 from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
 import time
@@ -10,7 +10,7 @@ def tinderBot(user="",password=""):
 	driver.get(url)
 
     #login into tinder
-    loginTinder(driver, user, password)
+    login_tinder(driver, user, passwd)
 
     #Starting search 
     search_match(driver, odd)
@@ -35,6 +35,7 @@ def tinderBot(user="",password=""):
 	driver.implicitly_wait(15)
 	#Enter in a register schedule application
 	register_app_button = driver.find_element_by_link_text('Registro de Jornada')
+	driver.find_element_by_xpath
 	register_app_button.click()
 
 	driver.implicitly_wait(20)
@@ -53,5 +54,26 @@ if __name__ == '__main__':
 
 search_match(driver)
     pass
-loginTinder(driver,user, passwd)
-    pass
+login_tinder(driver,user, passwd)
+    x_button = driver.find_element_by_xpath('/html/body/div[2]/div/div/button')
+	x_button.click()
+
+	inicia_session = driver.find_element_by_xpath('/html/body/div[1]/div/div[1]/div/main/div[1]/div/div/header/div[1]/div[2]/div/button/span')
+	inicia_session.click()
+
+	facebook_session = driver.find_element_by_xpath('/html/body/div[2]/div/div/div/div/div[3]/span/div[2]/button/span[2]')
+	facebook_session.click()
+
+	driver.switch_to.window(driver.window_handles[1])
+	
+	user_fb = driver.find_element_by_css_selector('#email')
+	user_fb.send_keys(user)
+
+	pass_fb = driver.find_element_by_css_selector('#pass')
+	pass_fb.send_keys(passwd)
+
+	entrar_fb = driver.find_element_by_xpath('//*[@id="u_0_0"]')
+	entrar_fb.click()
+	
+	driver.implicitly_wait(60)
+
